@@ -104,6 +104,9 @@ public class GCMIntentService extends GCMBaseIntentService {
 				.setContentIntent(contentIntent);
 
 		String message = extras.getString("message");
+		int pocetak_poruke = message.indexOf("message") + 10;
+		int kraj_poruke = message.indexOf("\"", pocetak_poruke);
+		message = message.substring(pocetak_poruke, kraj_poruke);
 		if (message != null) {
 			mBuilder.setContentText(message);
 		} else {
